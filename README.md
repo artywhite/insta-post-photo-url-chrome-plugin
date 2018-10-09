@@ -1,6 +1,6 @@
 # insta-post-photo-url-chrome-plugin
 
-Chrome plugin for getting photo url by given post url.
+Chrome plugin for getting photo url by given post url using Omnibox (chrome's address bar).
 
 # Usage example
 
