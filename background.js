@@ -9,8 +9,8 @@ function getNormalizedUrl(url) {
   return `${urlWithoutQuery}?${INSTA_QUERY_PARAMS}`;
 }
 
-function tryGetInstaPhotoUrl(input) {
-  const url = getNormalizedUrl(input);
+function tryGetInstaPhotoUrl(tabUrl) {
+  const url = getNormalizedUrl(tabUrl);
   return fetch(url)
     .then(response => response.json())
     .then(result => {
@@ -49,7 +49,8 @@ function copyTextToClipboard(text) {
 }
 
 chrome.omnibox.onInputEntered.addListener(text => {
-  // TODO: run only on instagram.com domain (find out how to get current url)
-
-  tryGetInstaPhotoUrl(text);
+  chrome.tabs.query({ active: true, lastFocusedWindow: true }, function(tabs) {
+    const { url } = tabs[0];
+    tryGetInstaPhotoUrl(url);
+  });
 });
