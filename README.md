@@ -2,7 +2,8 @@
 
 Chrome plugin for getting photo url by given post url.
 
-# TODO
+# TODO (ROADMAP)
 
-- open link in new tab
+- usage example
+- show notification
 - parse link url in current DOM instead of making request
