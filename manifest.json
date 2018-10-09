@@ -7,5 +7,6 @@
     "persistent": false
   },
   "omnibox": { "keyword": "inv" },
-  "manifest_version": 2
+  "manifest_version": 2,
+  "permissions": ["tabs"]
 }
