@@ -9,16 +9,20 @@ function getNormalizedUrl(url) {
   return `${urlWithoutQuery}?${INSTA_QUERY_PARAMS}`;
 }
 
+function openUrlInNewTab(url) {
+  chrome.tabs.create({ url });
+}
+
 function tryGetInstaPhotoUrl(tabUrl) {
   const url = getNormalizedUrl(tabUrl);
   return fetch(url)
     .then(response => response.json())
     .then(result => {
-      console.warn('Got result', result);
       const { graphql } = result;
       const { shortcode_media } = graphql;
       const { display_url } = shortcode_media;
       copyTextToClipboard(display_url);
+      openUrlInNewTab(display_url);
     });
 }
 
